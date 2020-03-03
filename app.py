@@ -23,14 +23,21 @@ def index():
     if request.method == "POST":
         name = request.form['name']
         nationality = request.form['nationality']
+        firstname = request.form['firstname']
+        lastname = request.form['lastname']
+        email = request.form['email']
     
     length = collection.count()
     order = length + 1
-    userInfo = { "name": name, "nationality": nationality, "order": order }
+    userInfo = {"email": email, "firstname": firstname, "lastname": lastname, "name": name, "nationality": nationality, "order": order }
+    user = collection.find({"email": email})
+    if user.count() > 0:
+        return "Your email is already exist"
     y = collection.find({"name": name})
     print(y)
     _id = collection.insert(userInfo)
     
+
     
     return redirect(url_for('ticket', id=_id))
 #  return send_file(name)

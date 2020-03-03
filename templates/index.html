@@ -9,7 +9,19 @@
             <h2>Create a LigerSat Boarding Pass</h2>
             <br>
             <form action="/create/ticket" method="post">
-              
+                <div class="input-group mb-3">
+                    <input id="email" class="form-control" placeholder="អ៊ីម៉ែល Email" name="email" type="text" required/>
+                    <!-- <input type="text"  placeholder="Name" aria-label="Username" aria-describedby="basic-addon1"> -->
+                  </div>
+                  <div class="input-group mb-3">
+                    <input id="firstname" class="form-control" placeholder="នាម Name" name="firstname" type="text" required/>
+                    <!-- <input type="text"  placeholder="Name" aria-label="Username" aria-describedby="basic-addon1"> -->
+                  </div>
+
+                  <div class="input-group mb-3">
+                    <input id="lastname" class="form-control" placeholder="ត្រកូលនាម Family Name" name="lastname" type="text" required/>
+                    <!-- <input type="text"  placeholder="Name" aria-label="Username" aria-describedby="basic-addon1"> -->
+                  </div>
 
                 <div class="input-group mb-3">
                     <input id="name" class="form-control" placeholder="Name you want to print" name="name" maxlength="18" type="text" required/>
@@ -18,7 +30,7 @@
          
                 <div class="form-group">
                     <select class="form-control" name="nationality" id="Nationality" required>
-                        <option value="" disabled selected>-- select your Nationality --</option>
+                        <option value="" disabled selected>-- សញ្ជាតិ select your Nationality --</option>
                         <option value="cambodian">Cambodian</option>
                         <option value="afghan">Afghan</option>
                         <option value="albanian">Albanian</option>
