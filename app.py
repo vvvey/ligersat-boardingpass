@@ -4,10 +4,12 @@ import pymongo
 import json
 import image
 import sys
+from dotenv import load_dotenv
+load_dotenv()
+import os
 
 
-
-mongolab_uri="mongodb://admin:liger72724@liger0-shard-00-00-gyl2h.mongodb.net:27017,liger0-shard-00-01-gyl2h.mongodb.net:27017,liger0-shard-00-02-gyl2h.mongodb.net:27017/test?ssl=true&replicaSet=Liger0-shard-0&authSource=admin&retryWrites=true&w=majority"
+mongolab_uri = os.environ.get("DATABASE_URI")
 
 client = pymongo.MongoClient(mongolab_uri,
                      connectTimeoutMS=10000,
@@ -36,16 +38,14 @@ def index():
     y = collection.find({"name": name})
     print(y)
     _id = collection.insert(userInfo)
-    
 
-    
     return redirect(url_for('ticket', id=_id))
 #  return send_file(name)
 
 
 @app.route('/')
 def name():
-    return render_template('index.html', title="Vuthy", username="Reaksmy")
+    return render_template('index.html', title="LigerSat Boarding Pass")
 
 @app.route('/ticket')
 def ticket():
@@ -67,7 +67,6 @@ def ticket():
 @app.route('/download')
 def download():
     image = request.args['image'] 
-    
     return send_file("static/" + image, as_attachment=True)
 
 
