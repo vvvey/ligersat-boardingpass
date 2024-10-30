@@ -1,10 +1,7 @@
-from PIL import Image, ImageDraw, ImageFont, ImageOps
-import sys
+from PIL import Image, ImageDraw, ImageFont
 
-# listofname = ["Vuthy vey", "Reaksmy Dancer", "Visal Sao", "mengthong LONg","រំដួល"]
-# # img = Image.new('RGB', (100, 30), color = (73, 109, 137))
-def createTicket(name, nationality, order):
-    img = Image.open("test.png")
+def createTicket(name, nationality, order, filename):
+    img = Image.open("./static/template.png")
     order = str(order)
     order1 = order
     for x in range(6 - len(order)):
@@ -31,7 +28,7 @@ def createTicket(name, nationality, order):
     # img.paste( ImageOps.colorize(w, (0,0,0), (0,0,0)), (1865,585),  w)
     img.paste((255,255,255), box=(1855,585), mask=w) 
         
-    img.save("static/" + name + order1 + ".png")
-    return name + order1 + ".png"
+    img.save("static/images/" + filename + ".png")
+    return filename + ".png"
 
-sys.modules[__name__] = createTicket
+# sys.modules[__name__] = createTicket
